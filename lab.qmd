@@ -1,0 +1,12 @@
+---
+title: "Forensic analysis"
+format: html
+website:
+  title: "Laboratory analysis"
+  navbar:
+    left:
+      - href: ...
+        text: ...
+
+---
+
