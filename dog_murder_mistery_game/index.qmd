@@ -51,7 +51,7 @@ library(here)
 ```{r}
 #| label: load-data
 
-data <- read_csv(here("dog_murder_mistery_game", "data", "dog_database.csv"))
+data <- read_csv("data/dog_database.csv")
 ```
 
 
@@ -62,23 +62,31 @@ data <- read_csv(here("dog_murder_mistery_game", "data", "dog_database.csv"))
 
 world <- ne_countries(scale = "medium", returnclass = "sf")
 
-# Get centroid coordinates for each country
 centroids <- world |>
   st_centroid() |>
   st_coordinates() |>
   as.data.frame() |>
   mutate(name = world$name)
 
-# Join dog data to centroids by country name
 dog_map <- data |>
-  left_join(centroids, by = c("Origin" = "name"))
+  left_join(centroids, by = c("Origin" = "name")) |>
+  mutate(img_path = paste0("test_dog_images/", Name, ".jpg"))  # adjust extension/pattern as needed
+
+# Custom icon: use each dog's photo as the marker, small thumbnail size
+dog_icons <- icons(
+  iconUrl = dog_map$img_path,
+  iconWidth = 100, iconHeight = 100,
+  className = "dog-marker-icon"
+)
 
 leaflet(dog_map) |>
   addTiles() |>
   addMarkers(
     lng = ~X, lat = ~Y,
+    icon = dog_icons,
     popup = ~paste0(
       "<b>", Name, "</b><br>",
+      "<img src='", img_path, "' width='150'><br>",
       "Breed: ", `Dog Breed`, "<br>",
       "Origin: ", Origin, "<br>",
       "Hair Color: ", `Hair Color`, "<br>",
@@ -87,5 +95,13 @@ leaflet(dog_map) |>
     ),
     label = ~Name
   )
+```
 
+```{css}
+/*| echo: false */
+.dog-marker-icon {
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 0 4px rgba(0,0,0,0.5);
+}
 ```
