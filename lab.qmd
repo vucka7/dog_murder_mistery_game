@@ -88,3 +88,6 @@ ggplot(heat_data, aes(x = feature, y = name, fill = scaled)) +
   )
 ```
 
+[Return to the digital clues](clues.qmd){.btn .btn-secondary}
+
+[Cast your vote](verdict.qmd){.btn .btn-danger}
