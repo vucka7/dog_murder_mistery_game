@@ -3,21 +3,21 @@ title: "Forensic analysis"
 format: html
 website:
   title: "Laboratory analysis"
-  navbar:
-    left:
-      - href: ...
-        text: ...
+execute:
+  echo: false
 
 ---
 
 ```{r}
+#| output: false
 # Loading the data
 data <- read.csv("dog_database_expanded.csv")
-str(data)
-colnames(data)
+#str(data)
+#colnames(data)
 ```
 
 ```{r}
+#| output: false
 # Loading libraries
 library(ggplot2)
 library(ggrepel)
@@ -58,12 +58,33 @@ ggplot(data, aes(paw_length_cm, paw_width_cm, label = name, color = name)) +
   )
 ```
 
-# [Return to the digital clues](clues.qmd){.btn .btn-secondary}
-
-# [Cast your vote](verdict.qmd){.btn .btn-danger}
-
 
 ```{r}
+crime_scene <- data %>% filter(record_type == "crime_scene")
+all_dogs <- data %>% filter(record_type == "suspect_reference")
 
+heat_data <- bind_rows(all_dogs, crime_scene) %>%
+  mutate(name = ifelse(record_type == "crime_scene", "Crime scene", name)) %>%
+  select(name,
+         `Hair length` = hair_length_cm,
+         `Shaft thickness` = hair_diameter_um,
+         `Undercoat density` = hair_undercoat_score_0_1,
+         `Colour similarity` = hair_lightness_0_1,
+         `Medulla ratio` = hair_medulla_ratio) %>%
+  pivot_longer(-name, names_to = "feature", values_to = "value") %>%
+  group_by(feature) %>%
+  mutate(scaled = (value - min(value)) / (max(value) - min(value))) %>%
+  ungroup()
+
+ggplot(heat_data, aes(x = feature, y = name, fill = scaled)) +
+  geom_tile(color = "white", linewidth = 0.5) +
+  scale_fill_gradient(low = "#fff5f0", high = "red", limits = c(0, 1)) +
+  labs(x = NULL, y = NULL, fill = "Relative\nvalue", title = "Hair evidence comparison") +
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(fill = "white", color = NA),
+    plot.background  = element_rect(fill = "white", color = NA),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
 ```
 
