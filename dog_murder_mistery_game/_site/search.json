@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Paw & Order: The Broken Pipe Unit",
+    "section": "",
+    "text": "The international RuffR Data Science Conference is taking place at Campus Gotland in Visby. At 02:13, the conference’s R pipeline suddenly stops working. Someone has chewed the &gt; from the native pipe operator:\nsuspects | filter(has_alibi == FALSE)\nTwenty-five dogs are attending the conference, but only five members of the overnight Pipeline Response Team had access to the restricted project room.\nThe player must examine the evidence, test the suspects’ alibis and identify who broke the R code.\nThe suspects Sava Sniffer — a Serbian Hound from Serbia Klara Cache — a Karst Shepherd Dog from Slovenia Byte Biter — a Chihuahua from Mexico Kommissar RegEx — a German Shepherd Dog with German–Austrian citizenship Vera Vector — a Swedish Vallhund from Sweden\nEach suspect has a different programming speciality, travel history and explanation for their whereabouts at the time of the crime.\nGameplay\nThe investigation progresses through several stages:\nExplore an interactive map showing the suspects’ journeys to Visby. Meet the five suspects and learn about their breeds and conference roles. Examine evidence from Git, the targets cache and server logs. Reveal clue results to eliminate innocent suspects. Analyse simulated bite-mark, hair and paw-print evidence.\n\n#install.packages(c(\"leaflet\", \"rnaturalearth\", \"rnaturalearthdata\", \"sf\", \"dplyr\"))\n\n\nlibrary(tidyverse)\nlibrary(sf)\nlibrary(rnaturalearth)\nlibrary(leaflet)\nlibrary(here)\n\n\ndata &lt;- read_csv(\"data/dog_database.csv\")\n\nRows: 5 Columns: 6\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (4): Name, Dog Breed, Origin, Hair Color\ndbl (2): Hair Length (cm), Bite Size / Jaw Width (cm)\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  }
+]
