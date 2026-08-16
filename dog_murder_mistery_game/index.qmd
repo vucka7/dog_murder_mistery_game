@@ -31,38 +31,29 @@ Reveal clue results to eliminate innocent suspects.
 Analyse simulated bite-mark, hair and paw-print evidence.
 
 ```{r}
-install.packages(c("leaflet", "rnaturalearth", "rnaturalearthdata", "sf", "dplyr"))
+#| label: install-packages
+#| eval: false
+
+#install.packages(c("leaflet", "rnaturalearth", "rnaturalearthdata", "sf", "dplyr"))
 ```
-
-
----
-title: "Dog Origins"
----
 
 ```{r}
 #| label: setup
 #| message: false
 
-library(dplyr)
+library(tidyverse)
 library(sf)
 library(rnaturalearth)
 library(leaflet)
+library(here)
 ```
 
 ```{r}
----
-title: "Dog Origins"
----
+#| label: load-data
 
-```{r}
-#| label: setup
-#| message: false
-
-library(dplyr)
-library(sf)
-library(rnaturalearth)
-library(leaflet)
+data <- read_csv(here("dog_murder_mistery_game", "data", "dog_database.csv"))
 ```
+
 
 ```{r}
 #| label: map
