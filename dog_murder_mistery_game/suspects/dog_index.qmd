@@ -1,0 +1,16 @@
+---
+title: "🐾 Suspects"
+listing:
+  contents: "*.qmd"
+  type: grid
+  grid-columns: 1
+  sort: "title"
+  fields: [title, subtitle, description, image]
+  filter-ui: true
+  sort-ui: false
+  exclude:
+    title: "🐾 Suspects"
+toc: false
+---
+
+Know the suspects!!

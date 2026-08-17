@@ -1,0 +1,24 @@
+---
+title: "Klara Cache"
+subtitle: "Serbian Hound 🧬"
+description: "PhD in Reproducible Workflow Engineering"
+image: ../dog_portraits/02_Klara_Cache.png
+about:
+  template: trestles
+  links:
+    - icon: github
+      text: GitHub
+      href: https://github.com/
+---
+
+## \## About me
+
+Remembers every hidden toy and calls it her local storage system.
+
+\## A fun fact
+
+I am a dog!
+
+\## My favourite (or most cursed) plot
+
+Heatmaps. Love them but also hate them equally. :)
