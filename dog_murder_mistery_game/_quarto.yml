@@ -8,11 +8,13 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
+      - href: suspects/dogs_index.qmd
+        text: "🐾 Suspects"
 
 format:
   html:
     theme:
-      - cosmo
+      - sketchy
       - brand
     css: styles.css
     toc: true
