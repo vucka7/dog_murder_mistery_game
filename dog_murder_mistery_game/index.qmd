@@ -10,16 +10,19 @@ suspects |
   filter(has_alibi == FALSE)
 ```
 
-Twenty-five dogs are attending the conference, but only five members of the overnight Pipeline Response Team had access to the restricted project room.
+Twenty-five dogs are attending the conference, but only five members of the overnight Pipeline Response Team had access to the restricted project room. They quickly became the only suspects.
 
 Pipeline Response Team
-Sava Sniffer — a Serbian Hound from Serbia
-Klara Cache — a Karst Shepherd Dog from Slovenia
-Byte Biter — a Chihuahua from Mexico
-Kommissar RegEx — a German Shepherd Dog with German–Austrian citizenship
-Vera Vector — a Swedish Vallhund from Sweden
 
-Each suspect has a different programming speciality, travel history and explanation for their whereabouts at the time of the crime.
+- Sava Sniffer — a Serbian Hound from Serbia
+- Klara Cache — a Karst Shepherd Dog from Slovenia
+- Byte Biter — a Chihuahua from Mexico
+- Kommissar RegEx — a German Shepherd Dog with German–Austrian citizenship
+- Vera Vector — a Swedish Vallhund from Sweden
+
+Each suspect has a different programming speciality, travel history and explanation for their whereabouts at the time of the crime. 
+
+Check out their details by hovering on the images or in the [Suspects](suspects/dog_index.qmd) tab.
 
 ```{r}
 #| label: install-packages
@@ -43,6 +46,7 @@ library(here)
 ```{r}
 #| label: load-data
 #| echo: false
+#| message: false
 
 data <- read_csv("data/dog_database.csv")
 ```
@@ -52,6 +56,7 @@ data <- read_csv("data/dog_database.csv")
 #| label: map
 #| echo: false
 #| warning: false
+#| message: false
 
 world <- ne_countries(scale = "medium", returnclass = "sf")
 
@@ -61,9 +66,21 @@ centroids <- world |>
   as.data.frame() |>
   mutate(name = world$name)
 
+#dog_map <- data |>
+  #left_join(centroids, by = c("Origin" = "name")) |>
+  #mutate(img_path = paste0("dog_portraits/", Name, ".jpg"))  # adjust extension/#pattern as needed
+
 dog_map <- data |>
   left_join(centroids, by = c("Origin" = "name")) |>
-  mutate(img_path = paste0("test_dog_images/", Name, ".jpg"))  # adjust extension/pattern as needed
+  rowwise() |>
+  mutate(
+    img_path = {
+      name_prefix <- str_sub(Name, 1, 4)  # first 4 letters, e.g. "Sava"
+      matched_file <- list.files("dog_portraits", pattern = name_prefix, full.names = TRUE)
+      if (length(matched_file) > 0) matched_file[1] else NA_character_
+    }
+  ) |>
+  ungroup()
 
 # Custom icon: use each dog's photo as the marker, small thumbnail size
 dog_icons <- icons(
