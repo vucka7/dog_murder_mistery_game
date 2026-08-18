@@ -11,14 +11,14 @@ about:
       href: https://github.com/
 ---
 
-## \## About me
+### About me
 
 Remembers every hidden toy and calls it her local storage system.
 
-\## A fun fact
+## A fun fact
 
 I am a dog!
 
-\## My favourite (or most cursed) plot
+## My favourite (or most cursed) plot
 
 Heatmaps. Love them but also hate them equally. :)
