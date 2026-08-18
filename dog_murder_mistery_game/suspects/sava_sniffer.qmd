@@ -13,13 +13,13 @@ about:
 
 ### About me
 
-Collects river postcards; his favourite shows the Sava River.
+I look for rare biological signals in large noisy datasets. I've been told I have a very distinctive high-pitched voice. 
 
 ### A fun fact
 
-I am a dog!
+I collect postcards of rivers (my favorite shows the River Sava). 
 
-### My favourite (or most cursed) plot
+### Reason for attending RuffR
 
-Heatmaps. Love them but also hate them equally. :)
+I will follow the scent of the bugs until I find them all '#debugging'. 
 
