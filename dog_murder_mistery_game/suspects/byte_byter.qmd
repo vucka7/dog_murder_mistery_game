@@ -13,13 +13,13 @@ about:
 
 ### About me
 
-Collects river postcards; his favourite shows the Sava River.
+Big dog in a small package. I make complex analyses work on computers with limited memory. 
 
 ### A fun fact
 
-I am a dog!
+I like to use an R Script to pick among my 14 favorite colorful bandanas. 
 
-### My favourite (or most cursed) plot
+### Reason for attending RuffR
 
-Heatmaps. Love them but also hate them equally. :)
+Building smaller pipelines and barking at Vikings. 
 

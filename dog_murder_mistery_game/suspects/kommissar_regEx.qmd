@@ -13,12 +13,12 @@ about:
 
 ### About me
 
-Remembers every hidden toy and calls it her local storage system.
+I study suspicious patterns in unstructured texts. I want to be as famous as Rin Tin Tin. 
 
 ## A fun fact
 
-I am a dog!
+I am currently investigating whether a doughnut is a Krapfen, Pfannkuchen, or Berliner.
 
-## My favourite (or most cursed) plot
+## Reason for attending RuffR
 
-Heatmaps. Love them but also hate them equally. :)
+To learn more about git code review. Might have a look at the sheep later. 
