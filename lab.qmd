@@ -1,0 +1,124 @@
+---
+title: "Forensic analysis"
+format: html
+website:
+  title: "Laboratory analysis"
+execute:
+  echo: false
+
+---
+
+```{r}
+#| output: false
+# Loading the data
+data <- read.csv("dog_database_expanded.csv")
+#str(data)
+#colnames(data)
+```
+
+```{r}
+#| output: false
+# Loading libraries
+library(ggplot2)
+library(ggrepel)
+library(tidyverse)
+```
+
+```{r}
+#| label: fig-hairheatmap
+#| fig-cap: "Hair features of the dogs."
+#| warning: false
+
+# Hair-feature heatmap
+crime_scene <- data %>% filter(record_type == "crime_scene")
+all_dogs <- data %>% filter(record_type == "suspect_reference")
+
+heat_data <- bind_rows(all_dogs, crime_scene) %>%
+  mutate(name = ifelse(record_type == "crime_scene", "Crime scene", name)) %>%
+  select(name,
+         `Hair length` = hair_length_cm,
+         `Shaft thickness` = hair_diameter_um,
+         `Undercoat density` = hair_undercoat_score_0_1,
+         `Colour similarity` = hair_lightness_0_1,
+         `Medulla ratio` = hair_medulla_ratio) %>%
+  pivot_longer(-name, names_to = "feature", values_to = "value") %>%
+  group_by(feature) %>%
+  mutate(scaled = (value - min(value)) / (max(value) - min(value))) %>%
+  ungroup()
+
+ggplot(heat_data, aes(x = feature, y = name, fill = scaled)) +
+  geom_tile(color = "white", linewidth = 0.5) +
+  scale_fill_gradient(low = "#fff5f0", high = "red", limits = c(0, 1)) +
+  labs(x = NULL, y = NULL, fill = "Relative\nvalue", title = "Hair evidence comparison") +
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(fill = "white", color = NA),
+    plot.background  = element_rect(fill = "white", color = NA),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+```
+
+```{r}
+#| label: fig-pawprints
+#| fig-cap: "Paw-print sizes of the dogs."
+#| warning: false
+
+
+# Paw-print scatterplot
+crime_scene <- data %>% filter(record_type == "crime_scene")
+
+ggplot(data, aes(paw_length_cm, paw_width_cm, label = name, color = name)) +
+  geom_rect(
+    data = crime_scene,
+    aes(xmin = paw_length_lower_cm, xmax = paw_length_upper_cm,
+        ymin = paw_width_lower_cm, ymax = paw_width_upper_cm),
+    inherit.aes = FALSE,
+    fill = NA, color = "red", linewidth = 0.5
+  ) +
+  geom_point() +
+  geom_text_repel() +
+  scale_color_manual(values = c("Sava Sniffer" = "#3399FF", "Klara Cache" = "#0000FF",
+                               "Lady Byte" = "#660099", "Kommissar RegEx" = "#0099FF",
+                               "Vera Vector" = "#9966CC", "Crime-scene sample" = "#CC0033")) +
+  labs(x = "Paw length (cm)", y = "Paw width (cm)", title = "Paw-print analysis") +
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(fill = "white", color = NA),
+    plot.background  = element_rect(fill = "white", color = NA)
+  )
+```
+
+
+```{r}
+#| label: fig-bitemarks
+#| fig-cap: "Bite marks of the dogs."
+#| warning: false
+
+selected_data <- data[data$id %in% c("lady_byte", "vera", "crime_scene"), ]
+
+# Bite-mark interval plot
+# geom_errorbarh() or geom_pointrange() 
+ggplot(selected_data, aes(x = id, y = bite_width_cm)) +
+  geom_point(size = 3) +                  # shows the measurement itself
+  geom_errorbar(
+    aes(ymin = bite_width_lower_cm, ymax = bite_width_upper_cm),
+    width = 0.2,
+    na.rm = FALSE
+  ) +
+  labs(
+    x = "Suspects",
+    y = "Bite width (cm)",
+    title = "Bite width measurements with interval limits"
+  ) +
+  theme_minimal()
+```
+
+The physical evidence has narrowed the case, but it has not solved it. Byte fits the bite evidence; Vera fits part of the hair evidence. The paw print is too incomplete to distinguish between them.
+
+
+
+
+
+[Return to the digital clues](clues.qmd){.btn .btn-secondary}
+
+[Cast your vote](verdict.qmd){.btn .btn-danger}
