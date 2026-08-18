@@ -4,35 +4,29 @@ title: "Paw & Order: The Broken Pipe Unit"
 
 The international RuffR Data Science Conference is taking place at Campus Gotland in Visby. At 02:13, the conference’s R pipeline suddenly stops working. Someone has chewed the > from the native pipe operator:
 
+```{r}
+#| eval: false
 suspects |
   filter(has_alibi == FALSE)
+```
 
-Twenty-five dogs are attending the conference, but only five members of the overnight Pipeline Response Team had access to the restricted project room.
+Twenty-five dogs are attending the conference, but only five members of the overnight Pipeline Response Team had access to the restricted project room. They quickly became the only suspects.
 
-The player must examine the evidence, test the suspects’ alibis and identify who broke the R code.
+Pipeline Response Team
 
-The suspects
-Sava Sniffer — a Serbian Hound from Serbia
-Klara Cache — a Karst Shepherd Dog from Slovenia
-Byte Biter — a Chihuahua from Mexico
-Kommissar RegEx — a German Shepherd Dog with German–Austrian citizenship
-Vera Vector — a Swedish Vallhund from Sweden
+- Sava Sniffer — a Serbian Hound from Serbia
+- Klara Cache — a Karst Shepherd Dog from Slovenia
+- Byte Biter — a Chihuahua from Mexico
+- Kommissar RegEx — a German Shepherd Dog with German–Austrian citizenship
+- Vera Vector — a Swedish Vallhund from Sweden
 
-Each suspect has a different programming speciality, travel history and explanation for their whereabouts at the time of the crime.
+Each suspect has a different programming speciality, travel history and explanation for their whereabouts at the time of the crime. 
 
-Gameplay
-
-The investigation progresses through several stages:
-
-Explore an interactive map showing the suspects’ journeys to Visby.
-Meet the five suspects and learn about their breeds and conference roles.
-Examine evidence from Git, the targets cache and server logs.
-Reveal clue results to eliminate innocent suspects.
-Analyse simulated bite-mark, hair and paw-print evidence.
+Check out their details by hovering on the images or in the [Suspects](suspects/dog_index.qmd) tab.
 
 ```{r}
 #| label: install-packages
-#| eval: false
+#| echo: false
 
 #install.packages(c("leaflet", "rnaturalearth", "rnaturalearthdata", "sf", "dplyr"))
 ```
@@ -40,6 +34,7 @@ Analyse simulated bite-mark, hair and paw-print evidence.
 ```{r}
 #| label: setup
 #| message: false
+#| echo: false
 
 library(tidyverse)
 library(sf)
@@ -50,6 +45,8 @@ library(here)
 
 ```{r}
 #| label: load-data
+#| echo: false
+#| message: false
 
 data <- read_csv("data/dog_database.csv")
 ```
@@ -59,6 +56,7 @@ data <- read_csv("data/dog_database.csv")
 #| label: map
 #| echo: false
 #| warning: false
+#| message: false
 
 world <- ne_countries(scale = "medium", returnclass = "sf")
 
@@ -68,9 +66,21 @@ centroids <- world |>
   as.data.frame() |>
   mutate(name = world$name)
 
+#dog_map <- data |>
+  #left_join(centroids, by = c("Origin" = "name")) |>
+  #mutate(img_path = paste0("dog_portraits/", Name, ".jpg"))  # adjust extension/#pattern as needed
+
 dog_map <- data |>
   left_join(centroids, by = c("Origin" = "name")) |>
-  mutate(img_path = paste0("test_dog_images/", Name, ".jpg"))  # adjust extension/pattern as needed
+  rowwise() |>
+  mutate(
+    img_path = {
+      name_prefix <- str_sub(Name, 1, 4)  # first 4 letters, e.g. "Sava"
+      matched_file <- list.files("dog_portraits", pattern = name_prefix, full.names = TRUE)
+      if (length(matched_file) > 0) matched_file[1] else NA_character_
+    }
+  ) |>
+  ungroup()
 
 # Custom icon: use each dog's photo as the marker, small thumbnail size
 dog_icons <- icons(
