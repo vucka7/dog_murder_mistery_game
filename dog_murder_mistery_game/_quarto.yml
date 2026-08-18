@@ -6,10 +6,9 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: Home
-      - about.qmd
+        text: "Home"
       - href: suspects/dog_index.qmd
-        text: "🐾 Suspects"
+        text: "Suspects"
 
 format:
   html:
