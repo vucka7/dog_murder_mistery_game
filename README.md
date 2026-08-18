@@ -182,8 +182,6 @@ Licence
 Add the chosen project licence here. Data and image sources may be subject to separate licences.
 
 
-
-
 Data Science With R - more details
 
 The cleanest design is a five-page investigation. The first four pages can remain ordinary Quarto pages; only the voting/verdict page needs Shiny and persistent storage.

@@ -1,0 +1,24 @@
+---
+title: "Vera Vector"
+subtitle: "Swedish Vallhund 🧬"
+description: "PhD in Biostatistics and Vectorised Data Analysis"
+image: ../dog_portraits/05_Vera_Vector.png
+about:
+  template: trestles
+  links:
+    - icon: github
+      text: GitHub
+      href: https://github.com/
+---
+
+### About me
+
+Remembers every hidden toy and calls it her local storage system.
+
+## A fun fact
+
+I am a dog!
+
+## My favourite (or most cursed) plot
+
+Heatmaps. Love them but also hate them equally. :)

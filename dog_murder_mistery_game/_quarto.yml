@@ -2,17 +2,19 @@ project:
   type: website
 
 website:
-  title: "dog_murder_mistery_game"
+  title: "Paw & Order: The Broken Pipe Unit"
   navbar:
     left:
       - href: index.qmd
         text: Home
       - about.qmd
+      - href: suspects/dog_index.qmd
+        text: "🐾 Suspects"
 
 format:
   html:
     theme:
-      - cosmo
+      - sketchy
       - brand
     css: styles.css
     toc: true
