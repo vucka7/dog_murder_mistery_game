@@ -11,15 +11,15 @@ about:
       href: https://github.com/
 ---
 
-## About me
+### About me
 
 Collects river postcards; his favourite shows the Sava River.
 
-## A fun fact
+### A fun fact
 
 I am a dog!
 
-## My favourite (or most cursed) plot
+### My favourite (or most cursed) plot
 
 Heatmaps. Love them but also hate them equally. :)
 
