@@ -4,7 +4,7 @@ filters:
   - shinylive
 execute:
   enabled: false
-  embed-resources: false
+embed-resources: false
 ---
 
 ## Who killed the R session?
