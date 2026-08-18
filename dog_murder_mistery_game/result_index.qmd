@@ -1,0 +1,70 @@
+---
+title: "Result page"
+filters:
+  - shinylive
+execute:
+  enabled: false
+  embed-resources: false
+---
+
+## Who killed the R session?
+
+```{shinylive-r}
+#| standalone: true
+#| viewerHeight: 700
+
+library(shiny)
+
+
+shinyApp(
+  ui = fluidPage(
+    selectInput(
+      "type",
+      label = "Choose your criminal",
+      choices = c(
+        "Choose here" = "",
+        "Klara Cache",
+        "Kommissar RegEx",
+        "Sava Sniffer",
+        "Vera Vector",
+        "Byte Byter"
+      ), 
+      selected = ""
+      
+    ),
+
+    textOutput("text_output"),
+    uiOutput("image_output")
+  ),
+
+  server = function(input, output) {
+
+    output$image_output <- renderUI({
+      if (input$type == "") return(NULL)
+      if (input$type == "Byte Byter") {
+        tags$img(
+          src = "../dog_portraits/03_Byte_Biter.png",
+          alt = "Byte Byter",
+          width = "500px"
+        )
+      } else {
+        tags$img(
+          src = "../dog_portraits/04_Kommissar_RegEx.png",
+          alt = "Wrong suspect",
+          width = "500px"
+        )
+      }
+    })
+
+    output$text_output <- renderText({
+      if (input$type == "") return("")
+      if (input$type == "Byte Byter") {
+        "You are a true detective! You found the criminal that killed the session!"
+      } else {
+        "Try again, this is not the criminal."
+      }
+    })
+  }
+)
+
+```
