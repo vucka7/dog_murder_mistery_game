@@ -14,4 +14,4 @@ listing:
 toc: false
 ---
 
-Know the suspects!!
+The investigators currently have 5 suspects who could have commited the crime.

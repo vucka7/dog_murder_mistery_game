@@ -13,12 +13,12 @@ about:
 
 ### About me
 
-Remembers every hidden toy and calls it her local storage system.
+I graduated with a MSc in Statistics from the Stockholm School of Pawbability. Now I focus on vectorized operations. 
 
 ## A fun fact
 
-I am a dog!
+I like to schedule long analyses around my afternoon fika. 
 
-## My favourite (or most cursed) plot
+## Reason for attending RuffR
 
-Heatmaps. Love them but also hate them equally. :)
+I want to learn more about factors. What better place to be for the 'Viking dog'.

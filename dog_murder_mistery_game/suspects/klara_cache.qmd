@@ -1,6 +1,6 @@
 ---
 title: "Klara Cache"
-subtitle: "Serbian Hound 🧬"
+subtitle: "Karst Shepherd Dog 🧬"
 description: "PhD in Reproducible Workflow Engineering"
 image: ../dog_portraits/02_Klara_Cache.png
 about:
@@ -13,12 +13,13 @@ about:
 
 ### About me
 
-Remembers every hidden toy and calls it her local storage system.
+ I am a national treasure. In my free time I fight wolves and bears. 
 
 ## A fun fact
 
-I am a dog!
+I remember every hidden toy! It's my local storage system.
 
-## My favourite (or most cursed) plot
+## Reason for attending RuffR
 
-Heatmaps. Love them but also hate them equally. :)
+To make more reproducible R projects. And protect the sheep of Gotland. 
+Always reuse cached results!
