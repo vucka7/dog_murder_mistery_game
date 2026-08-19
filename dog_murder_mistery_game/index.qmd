@@ -35,6 +35,7 @@ Check out their details by hovering on the images or in the [Suspects](suspects/
 #| label: setup
 #| message: false
 #| echo: false
+#| warning: false
 
 library(tidyverse)
 library(sf)

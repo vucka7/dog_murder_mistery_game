@@ -23,6 +23,96 @@ A digital alibi is therefore **provisional**. Samples from all five dogs must st
 :::
 
 
+```{r}
+#| label: setup
+#| echo: false
+#| message: false
+#| warning: false
+
+library(readr)
+library(dplyr)
+library(stringr)
+library(hms)
+library(knitr)
+library(tibble)
+library(readr)
+
+dogs <- read_csv(
+  "data/dog_database_expanded.csv",
+  show_col_types = FALSE
+) |>
+  filter(record_type == "suspect_reference")
+
+# Create the fictional Git records
+git_log <- tribble(
+  ~time,      ~user,               ~workstation,          ~repository,       ~signature_valid, ~message,
+  "21:11:42", "vera-vector",       "study-room-3",        "vector-analysis", FALSE,            "Check factor levels",
+  "21:13:04", "kommissar-regex",   "regex-room-2",        "date-patterns",   TRUE,             "Fix suspicious date pattern",
+  "21:14:21", "lady-byte",         "shared-workstation",  "profiling-project", FALSE,          "Open project"
+)
+
+# Save it as a CSV
+write_csv(
+  git_log,
+  "data/git_log.csv"
+)
+
+git_log <- read_csv(
+  "data/git_log.csv",
+  show_col_types = FALSE
+) |>
+  mutate(time = as_hms(time))
+
+# Create the fictional targets cache records
+cache_events <- tribble(
+  ~time,      ~user,             ~workstation,             ~event,              ~target,
+  "21:11:51", "vera-vector",     "study-room-3",           "target_started",     "factor_summary",
+  "21:12:41", "klara-cache",     "reproducibility-room",   "target_checked",     "clean_data",
+  "21:12:57", "klara-cache",     "reproducibility-room",   "target_skipped",     "model",
+  "21:13:08", "klara-cache",     "reproducibility-room",   "target_checked",     "report",
+  "21:13:25", "klara-cache",     "reproducibility-room",   "pipeline_completed", "report",
+  "21:14:06", "lady-byte",       "shared-workstation",     "target_started",     "memory_profile"
+)
+
+# Save it as a CSV
+write_csv(
+  cache_events,
+  "data/cache_events.csv"
+)
+
+cache_events <- read_csv(
+  "data/cache_events.csv",
+  show_col_types = FALSE
+) |>
+  mutate(time = as_hms(time))
+# Create the fictional conference server records
+server_log <- tribble(
+  ~time,      ~user,             ~repository,             ~message,
+  "21:11:48", "vera-vector",     "vector-analysis",       "Checking factor levels",
+  "21:12:38", "sava-sniffer",    "missing-semicolon",     "Searching log for semicolon",
+  "21:12:55", "sava-sniffer",    "missing-semicolon",     "Possible missing ; found",
+  "21:13:11", "sava-sniffer",    "missing-semicolon",     "Checking line after semicolon",
+  "21:13:29", "sava-sniffer",    "missing-semicolon",     "Semicolon search completed",
+  "21:14:02", "lady-byte",       "profiling-project",     "Opening memory report"
+)
+
+# Save it as a CSV
+write_csv(
+  server_log,
+  "data/server_log.csv"
+)
+
+server_log <- read_csv(
+  "data/server_log.csv",
+  show_col_types = FALSE
+) |>
+  mutate(time = as_hms(time))
+
+incident_time <- as_hms("21:13:00")
+
+```
+
+
 ## Clue 1: The signed Git commit
 
 Kommissar RegEx claims that he was reviewing another repository from a workstation in a different university room at 21:13.
@@ -42,7 +132,7 @@ kommissar_evidence <- git_log |>
 ```
 
 <details class="clue-result">
-<summary><strong>Reveal the finding</strong></summary>
+<summary><strong>Reveal the finding</strong></summary
 
 ```{r}
 
@@ -197,3 +287,29 @@ The digital evidence alone cannot answer those questions.
 The laboratory must therefore compare the bite, hair, and paw samples from **all five dogs**.
 
 [Send the evidence to the laboratory](lab.qmd){.btn .btn-warning .btn-lg}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+stopifnot(nrow(kommissar_evidence) >= 1)
+
+stopifnot(klara_before)
+stopifnot(klara_after)
+
+stopifnot(sava_before)
+stopifnot(sava_after)
+
+stopifnot(
+  setequal(
+    dogs$name[dogs$digital_alibi_supported],
+    c(
+      "Sava Sniffer",
+      "Klara Cache",
+      "Kommissar RegEx"
+    )
+  )
+)
+
+```
