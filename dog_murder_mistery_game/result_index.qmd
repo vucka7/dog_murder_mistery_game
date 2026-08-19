@@ -45,7 +45,7 @@ shinyApp(
       if (input$type == "Byte Biter") {
         tags$img(
           src = "../dog_portraits/06_mugshot.png",
-          alt = "Byte Byter",
+          alt = "Byte Biter",
           width = "500px"
         )
       } else {
