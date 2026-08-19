@@ -133,7 +133,7 @@ kommissar_evidence <- git_log |>
 ```
 
 <details class="clue-result">
-<summary><strong>Reveal the finding</strong></summary
+<summary><strong>Reveal the finding</strong></summary>
 
 ```{r}
 
