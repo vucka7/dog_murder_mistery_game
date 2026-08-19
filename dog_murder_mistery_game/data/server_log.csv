@@ -4,4 +4,4 @@ time,user,repository,message
 21:12:55,sava-sniffer,missing-semicolon,Possible missing ; found
 21:13:11,sava-sniffer,missing-semicolon,Checking line after semicolon
 21:13:29,sava-sniffer,missing-semicolon,Semicolon search completed
-21:14:02,lady-byte,profiling-project,Opening memory report
+21:14:02,byte-biter,profiling-project,Opening memory report
