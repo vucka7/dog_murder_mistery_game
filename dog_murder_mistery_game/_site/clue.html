@@ -80,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-55dcbddef5f0347b5719dc0a9bee9fc4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-41c0af10908d7b098ac936763e582917.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -163,6 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#clue-1-the-signed-git-commit" id="toc-clue-1-the-signed-git-commit" class="nav-link active" data-scroll-target="#clue-1-the-signed-git-commit">Clue 1: The signed Git commit</a></li>
+  <li><a href="#clue-2-the-active-cache" id="toc-clue-2-the-active-cache" class="nav-link" data-scroll-target="#clue-2-the-active-cache">Clue 2: The active cache</a></li>
   <li><a href="#clue-3-the-missing-semicolon" id="toc-clue-3-the-missing-semicolon" class="nav-link" data-scroll-target="#clue-3-the-missing-semicolon">Clue 3: The missing semicolon</a></li>
   <li><a href="#two-digital-finalistsbut-five-laboratory-samples" id="toc-two-digital-finalistsbut-five-laboratory-samples" class="nav-link" data-scroll-target="#two-digital-finalistsbut-five-laboratory-samples">Two digital finalists—but five laboratory samples</a></li>
   </ul>
@@ -225,71 +226,78 @@ Warning
 <summary>
 <strong>Reveal the finding</strong>
 </summary>
-<p>select(time, workstation, repository, message) |&gt; kable( col.names = c( “Time”, “Workstation”, “Repository”, “Commit” ) )</p>
-<pre><code>
-::: {.cell-output-display}
-
-
-|Time     |Workstation  |Repository    |Commit                      |
-|:--------|:------------|:-------------|:---------------------------|
-|21:13:04 |regex-room-2 |date-patterns |Fix suspicious date pattern |
-
-
-:::
-:::
-
-
-
-A verified commit was made through Kommissar RegEx’s authenticated account at **21:13:04** from another university room.
-
-That is a strong digital alibi—but is it perfect? Someone else might theoretically have used his authenticated session.
-
-**Provisional digital alibi supported:** Kommissar RegEx
-
-**Still lacking a digital alibi:** Sava Sniffer, Klara Cache, Byte Biter, and Vera Vector
-
-**Laboratory status:** All five dogs remain under investigation.
-
-&lt;/details&gt;
-
-## Clue 2: The active cache
-
-Klara Cache claims that she was monitoring a long-running workflow in the reproducibility room.
-
-Did her authenticated session remain active around 21:13?
-
-
-::: {.cell}
-
-```{.r .cell-code}
-klara_evidence &lt;- cache_events |&gt;
-  filter(
-    user == "klara-cache",
-    time &gt;= as_hms("21:12:00"),
-    time &lt;= as_hms("21:14:00")
-  ) |&gt;
-  arrange(time)
-
-klara_before &lt;- any(klara_evidence$time &lt; incident_time)
-klara_after  &lt;- any(klara_evidence$time &gt; incident_time)
-
-klara_alibi_supported &lt;- klara_before &amp;&amp; klara_after</code></pre>
-<p>:::</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>kommissar_evidence <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(time, workstation, repository, message) <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">col.names =</span> <span class="fu">c</span>(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Time"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Workstation"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Repository"</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Commit"</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Time</th>
+<th style="text-align: left;">Workstation</th>
+<th style="text-align: left;">Repository</th>
+<th style="text-align: left;">Commit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">21:13:04</td>
+<td style="text-align: left;">regex-room-2</td>
+<td style="text-align: left;">date-patterns</td>
+<td style="text-align: left;">Fix suspicious date pattern</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>A verified commit was made through Kommissar RegEx’s authenticated account at <strong>21:13:04</strong> from another university room.</p>
+<p>That is a strong digital alibi—but is it perfect? Someone else might theoretically have used his authenticated session.</p>
+<p><strong>Provisional digital alibi supported:</strong> Kommissar RegEx</p>
+<p><strong>Still lacking a digital alibi:</strong> Sava Sniffer, Klara Cache, Byte Biter, and Vera Vector</p>
+<p><strong>Laboratory status:</strong> All five dogs remain under investigation.</p>
+</details>
+</section>
+<section id="clue-2-the-active-cache" class="level2">
+<h2 class="anchored" data-anchor-id="clue-2-the-active-cache">Clue 2: The active cache</h2>
+<p>Klara Cache claims that she was monitoring a long-running workflow in the reproducibility room.</p>
+<p>Did her authenticated session remain active around 21:13?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>klara_evidence <span class="ot">&lt;-</span> cache_events <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    user <span class="sc">==</span> <span class="st">"klara-cache"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    time <span class="sc">&gt;=</span> <span class="fu">as_hms</span>(<span class="st">"21:12:00"</span>),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    time <span class="sc">&lt;=</span> <span class="fu">as_hms</span>(<span class="st">"21:14:00"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(time)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>klara_before <span class="ot">&lt;-</span> <span class="fu">any</span>(klara_evidence<span class="sc">$</span>time <span class="sc">&lt;</span> incident_time)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>klara_after  <span class="ot">&lt;-</span> <span class="fu">any</span>(klara_evidence<span class="sc">$</span>time <span class="sc">&gt;</span> incident_time)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>klara_alibi_supported <span class="ot">&lt;-</span> klara_before <span class="sc">&amp;&amp;</span> klara_after</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <details class="clue-result">
 <summary>
 <strong>Reveal the finding</strong>
 </summary>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>klara_evidence <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(time, workstation, event, target) <span class="sc">|&gt;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">col.names =</span> <span class="fu">c</span>(</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Time"</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Workstation"</span>,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Cache event"</span>,</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Target"</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>klara_evidence <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(time, workstation, event, target) <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">col.names =</span> <span class="fu">c</span>(</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Time"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Workstation"</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Cache event"</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Target"</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -336,43 +344,43 @@ klara_alibi_supported &lt;- klara_before &amp;&amp; klara_after</code></pre>
 <p><strong>Still lacking a digital alibi:</strong> Sava Sniffer, Byte Biter, and Vera Vector</p>
 <p><strong>Laboratory status:</strong> All five dogs remain under investigation.</p>
 </details>
-</details></section>
+</section>
 <section id="clue-3-the-missing-semicolon" class="level2">
 <h2 class="anchored" data-anchor-id="clue-3-the-missing-semicolon">Clue 3: The missing semicolon</h2>
 <p>Sava Sniffer claims that he was following the scent of a missing semicolon through another repository.</p>
 <p>Let’s search the server logs.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sava_evidence <span class="ot">&lt;-</span> server_log <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    user <span class="sc">==</span> <span class="st">"sava-sniffer"</span>,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_detect</span>(</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      message,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">regex</span>(<span class="st">"semicolon|;"</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    time <span class="sc">&gt;=</span> <span class="fu">as_hms</span>(<span class="st">"21:12:00"</span>),</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    time <span class="sc">&lt;=</span> <span class="fu">as_hms</span>(<span class="st">"21:14:00"</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(time)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>sava_before <span class="ot">&lt;-</span> <span class="fu">any</span>(sava_evidence<span class="sc">$</span>time <span class="sc">&lt;</span> incident_time)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>sava_after  <span class="ot">&lt;-</span> <span class="fu">any</span>(sava_evidence<span class="sc">$</span>time <span class="sc">&gt;</span> incident_time)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>sava_alibi_supported <span class="ot">&lt;-</span> sava_before <span class="sc">&amp;&amp;</span> sava_after</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sava_evidence <span class="ot">&lt;-</span> server_log <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    user <span class="sc">==</span> <span class="st">"sava-sniffer"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_detect</span>(</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>      message,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">regex</span>(<span class="st">"semicolon|;"</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    time <span class="sc">&gt;=</span> <span class="fu">as_hms</span>(<span class="st">"21:12:00"</span>),</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    time <span class="sc">&lt;=</span> <span class="fu">as_hms</span>(<span class="st">"21:14:00"</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(time)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>sava_before <span class="ot">&lt;-</span> <span class="fu">any</span>(sava_evidence<span class="sc">$</span>time <span class="sc">&lt;</span> incident_time)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>sava_after  <span class="ot">&lt;-</span> <span class="fu">any</span>(sava_evidence<span class="sc">$</span>time <span class="sc">&gt;</span> incident_time)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>sava_alibi_supported <span class="ot">&lt;-</span> sava_before <span class="sc">&amp;&amp;</span> sava_after</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <details class="clue-result">
 <summary>
 <strong>Reveal the finding</strong>
 </summary>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sava_evidence <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(time, repository, message) <span class="sc">|&gt;</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">col.names =</span> <span class="fu">c</span>(</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Time"</span>,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Repository"</span>,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Log message"</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sava_evidence <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(time, repository, message) <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">col.names =</span> <span class="fu">c</span>(</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Time"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Repository"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Log message"</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
