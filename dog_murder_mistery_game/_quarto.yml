@@ -10,7 +10,7 @@ website:
       - href: suspects/dog_index.qmd
         text: "Suspects"
       - href: result_index.qmd
-        text: "Give your veredict"
+        text: "Give your verdict"
 
 format:
   html:
