@@ -28,7 +28,7 @@ shinyApp(
         "Kommissar RegEx",
         "Sava Sniffer",
         "Vera Vector",
-        "Byte Byter"
+        "Byte Biter"
       ), 
       selected = ""
       
