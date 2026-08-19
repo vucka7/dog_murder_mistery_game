@@ -28,7 +28,7 @@ Check out their details by hovering on the images or in the [Suspects](suspects/
 #| label: install-packages
 #| echo: false
 
-#install.packages(c("leaflet", "rnaturalearth", "rnaturalearthdata", "sf", "dplyr"))
+#install.packages(c("leaflet", "rnaturalearth", "rnaturalearthdata", "sf", "dplyr", "shinyLive"))
 ```
 
 ```{r}

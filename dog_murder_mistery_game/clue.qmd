@@ -29,6 +29,7 @@ A digital alibi is therefore **provisional**. Samples from all five dogs must st
 #| message: false
 #| warning: false
 
+library(shinylive)
 library(readr)
 library(dplyr)
 library(stringr)
