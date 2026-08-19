@@ -5,6 +5,7 @@ filters:
 execute:
   enabled: false
 embed-resources: false
+self-contained: false
 ---
 
 ## Who killed the R session?

@@ -9,6 +9,8 @@ website:
         text: "Home"
       - href: suspects/dog_index.qmd
         text: "Suspects"
+      - href: clue.qmd
+        text: "Investigate"
       - href: result_index.qmd
         text: "Give your verdict"
 
