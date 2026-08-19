@@ -1,0 +1,7 @@
+time,user,workstation,event,target
+21:11:51,vera-vector,study-room-3,target_started,factor_summary
+21:12:41,klara-cache,reproducibility-room,target_checked,clean_data
+21:12:57,klara-cache,reproducibility-room,target_skipped,model
+21:13:08,klara-cache,reproducibility-room,target_checked,report
+21:13:25,klara-cache,reproducibility-room,pipeline_completed,report
+21:14:06,lady-byte,shared-workstation,target_started,memory_profile
