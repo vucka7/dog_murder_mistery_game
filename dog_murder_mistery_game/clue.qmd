@@ -49,7 +49,7 @@ git_log <- tribble(
   ~time,      ~user,               ~workstation,          ~repository,       ~signature_valid, ~message,
   "21:11:42", "vera-vector",       "study-room-3",        "vector-analysis", FALSE,            "Check factor levels",
   "21:13:04", "kommissar-regex",   "regex-room-2",        "date-patterns",   TRUE,             "Fix suspicious date pattern",
-  "21:14:21", "lady-byte",         "shared-workstation",  "profiling-project", FALSE,          "Open project"
+  "21:14:21", "byte-biter",         "shared-workstation",  "profiling-project", FALSE,          "Open project"
 )
 
 # Save it as a CSV
@@ -72,7 +72,7 @@ cache_events <- tribble(
   "21:12:57", "klara-cache",     "reproducibility-room",   "target_skipped",     "model",
   "21:13:08", "klara-cache",     "reproducibility-room",   "target_checked",     "report",
   "21:13:25", "klara-cache",     "reproducibility-room",   "pipeline_completed", "report",
-  "21:14:06", "lady-byte",       "shared-workstation",     "target_started",     "memory_profile"
+  "21:14:06", "byte-biter",       "shared-workstation",     "target_started",     "memory_profile"
 )
 
 # Save it as a CSV
@@ -94,7 +94,7 @@ server_log <- tribble(
   "21:12:55", "sava-sniffer",    "missing-semicolon",     "Possible missing ; found",
   "21:13:11", "sava-sniffer",    "missing-semicolon",     "Checking line after semicolon",
   "21:13:29", "sava-sniffer",    "missing-semicolon",     "Semicolon search completed",
-  "21:14:02", "lady-byte",       "profiling-project",     "Opening memory report"
+  "21:14:02", "byte-biter",       "profiling-project",     "Opening memory report"
 )
 
 # Save it as a CSV
@@ -157,7 +157,7 @@ That is a strong digital alibi—but is it perfect? Someone else might theoretic
 
 **Provisional digital alibi supported:** Kommissar RegEx
 
-**Still lacking a digital alibi:** Sava Sniffer, Klara Cache, Lady Byte, and Vera Vector
+**Still lacking a digital alibi:** Sava Sniffer, Klara Cache, Byte Biter, and Vera Vector
 
 **Laboratory status:** All five dogs remain under investigation.
 
@@ -211,7 +211,7 @@ This supports her story. However, a cached process can run automatically, and an
 
 **Digital alibis supported so far:** Kommissar RegEx and Klara Cache
 
-**Still lacking a digital alibi:** Sava Sniffer, Lady Byte, and Vera Vector
+**Still lacking a digital alibi:** Sava Sniffer, Byte Biter, and Vera Vector
 
 **Laboratory status:** All five dogs remain under investigation.
 
@@ -265,7 +265,7 @@ This is another strong digital alibi—but it still identifies an account rather
 
 **Digital alibis supported:** Kommissar RegEx, Klara Cache, and Sava Sniffer
 
-**Digital finalists:** Lady Byte and Vera Vector
+**Digital finalists:** Byte Biter and Vera Vector
 
 **Laboratory status:** Samples from all five dogs must still be examined.
 
@@ -279,7 +279,7 @@ Three dogs have produced strong digital alibis:
 - Klara Cache
 - Sava Sniffer
 
-Lady Byte and Vera Vector remain the two **digital finalists**.
+Byte Biter and Vera Vector remain the two **digital finalists**.
 
 But wait—could another dog have used Kommissar’s authenticated session? Could Klara’s cache have continued automatically? Could someone have submitted commands through Sava’s account?
 
