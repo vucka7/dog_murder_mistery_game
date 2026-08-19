@@ -1,5 +1,8 @@
 project:
   type: website
+  resources:
+    - dog_portraits/06_mugshot.png
+    - dog_portraits/07_escape.png
 
 website:
   title: "Paw & Order: The Broken Pipe Unit"

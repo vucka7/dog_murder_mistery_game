@@ -44,13 +44,13 @@ shinyApp(
       if (input$type == "") return(NULL)
       if (input$type == "Byte Byter") {
         tags$img(
-          src = "../dog_portraits/03_Byte_Biter.png",
+          src = "../dog_portraits/06_mugshot.png",
           alt = "Byte Byter",
           width = "500px"
         )
       } else {
         tags$img(
-          src = "../dog_portraits/04_Kommissar_RegEx.png",
+          src = "../dog_portraits/07_escape.png",
           alt = "Wrong suspect",
           width = "500px"
         )
@@ -62,7 +62,7 @@ shinyApp(
       if (input$type == "Byte Byter") {
         "You are a true detective! You found the criminal that killed the session!"
       } else {
-        "Try again, this is not the criminal."
+        "You made the wrong choice.Now Byte Byter gained more attitude and is on the loose!!"
       }
     })
   }
