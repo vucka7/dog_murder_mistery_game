@@ -60,7 +60,7 @@ ggplot(heat_data, aes(x = feature, y = name, fill = scaled)) +
 
 ```{r}
 #| label: fig-pawprints
-#| fig-cap: "Paw-print sizes of the dogs."
+#| fig-cap: "Paw print sizes of the dogs."
 #| warning: false
 
 
@@ -80,7 +80,7 @@ ggplot(data, aes(paw_length_cm, paw_width_cm, label = name, color = name)) +
   scale_color_manual(values = c("Sava Sniffer" = "#3399FF", "Klara Cache" = "#0000FF",
                                "Byte Biter" = "#660099", "Kommissar RegEx" = "#0099FF",
                                "Vera Vector" = "#9966CC", "Crime-scene sample" = "#CC0033")) +
-  labs(x = "Paw length (cm)", y = "Paw width (cm)", title = "Paw-print analysis") +
+  labs(x = "Paw length (cm)", y = "Paw width (cm)", title = "Paw print analysis") +
   theme_minimal() +
   theme(
     panel.background = element_rect(fill = "white", color = NA),
@@ -94,7 +94,7 @@ ggplot(data, aes(paw_length_cm, paw_width_cm, label = name, color = name)) +
 #| fig-cap: "Bite marks of the dogs."
 #| warning: false
 
-selected_data <- data[data$name %in% c("Bite Byter", "Vera Vector", "Crime-scene sample"), ]
+selected_data <- data[data$name %in% c("Byte Biter", "Vera Vector", "Crime-scene sample"), ]
 
 # Bite-mark interval plot
 # geom_errorbarh() or geom_pointrange() 
