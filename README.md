@@ -1,5 +1,4 @@
-# dog_murder_mistery_game
-Paw & Order: The Broken Pipe Unit
+# Paw & Order: The Broken Pipe Unit
 
 An interactive dog-themed mystery game developed in R and Quarto during the RAUKR 2026 Data Science With R course.
 
