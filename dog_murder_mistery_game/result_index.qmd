@@ -59,10 +59,10 @@ shinyApp(
 
     output$text_output <- renderText({
       if (input$type == "") return("")
-      if (input$type == "Byte Byter") {
+      if (input$type == "Byte Biter") {
         "You are a true detective! You found the criminal that killed the session!"
       } else {
-        "You made the wrong choice.Now Byte Byter gained more attitude and is on the loose!!"
+        "You made the wrong choice. Now Byte Biter gained more attitude and is on the loose!!"
       }
     })
   }
