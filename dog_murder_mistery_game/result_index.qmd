@@ -42,7 +42,7 @@ shinyApp(
 
     output$image_output <- renderUI({
       if (input$type == "") return(NULL)
-      if (input$type == "Byte Byter") {
+      if (input$type == "Byte Biter") {
         tags$img(
           src = "../dog_portraits/06_mugshot.png",
           alt = "Byte Byter",
