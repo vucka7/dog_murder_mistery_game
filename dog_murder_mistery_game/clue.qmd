@@ -157,7 +157,7 @@ That is a strong digital alibi—but is it perfect? Someone else might theoretic
 
 **Provisional digital alibi supported:** Kommissar RegEx
 
-**Still lacking a digital alibi:** Sava Sniffer, Klara Cache, Lady Byte, and Vera Vector
+**Still lacking a digital alibi:** Sava Sniffer, Klara Cache, Byte Biter, and Vera Vector
 
 **Laboratory status:** All five dogs remain under investigation.
 
@@ -211,7 +211,7 @@ This supports her story. However, a cached process can run automatically, and an
 
 **Digital alibis supported so far:** Kommissar RegEx and Klara Cache
 
-**Still lacking a digital alibi:** Sava Sniffer, Lady Byte, and Vera Vector
+**Still lacking a digital alibi:** Sava Sniffer, Byte Biter, and Vera Vector
 
 **Laboratory status:** All five dogs remain under investigation.
 
@@ -265,7 +265,7 @@ This is another strong digital alibi—but it still identifies an account rather
 
 **Digital alibis supported:** Kommissar RegEx, Klara Cache, and Sava Sniffer
 
-**Digital finalists:** Lady Byte and Vera Vector
+**Digital finalists:** Byte Biter and Vera Vector
 
 **Laboratory status:** Samples from all five dogs must still be examined.
 
