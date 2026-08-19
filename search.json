@@ -1,0 +1,142 @@
+[
+  {
+    "objectID": "suspects/vera_vector.html",
+    "href": "suspects/vera_vector.html",
+    "title": "Vera Vector",
+    "section": "",
+    "text": "I graduated with a MSc in Statistics from the Stockholm School of Pawbability. Now I focus on vectorized operations."
+  },
+  {
+    "objectID": "suspects/vera_vector.html#a-fun-fact",
+    "href": "suspects/vera_vector.html#a-fun-fact",
+    "title": "Vera Vector",
+    "section": "A fun fact",
+    "text": "A fun fact\nI like to schedule long analyses around my afternoon fika."
+  },
+  {
+    "objectID": "suspects/vera_vector.html#reason-for-attending-ruffr",
+    "href": "suspects/vera_vector.html#reason-for-attending-ruffr",
+    "title": "Vera Vector",
+    "section": "Reason for attending RuffR",
+    "text": "Reason for attending RuffR\nI want to learn more about factors. What better place to be for the ‘Viking dog’."
+  },
+  {
+    "objectID": "suspects/kommissar_regEx.html",
+    "href": "suspects/kommissar_regEx.html",
+    "title": "Kommissar RegEx",
+    "section": "",
+    "text": "I study suspicious patterns in unstructured texts. I want to be as famous as Rin Tin Tin."
+  },
+  {
+    "objectID": "suspects/kommissar_regEx.html#a-fun-fact",
+    "href": "suspects/kommissar_regEx.html#a-fun-fact",
+    "title": "Kommissar RegEx",
+    "section": "A fun fact",
+    "text": "A fun fact\nI am currently investigating whether a doughnut is a Krapfen, Pfannkuchen, or Berliner."
+  },
+  {
+    "objectID": "suspects/kommissar_regEx.html#reason-for-attending-ruffr",
+    "href": "suspects/kommissar_regEx.html#reason-for-attending-ruffr",
+    "title": "Kommissar RegEx",
+    "section": "Reason for attending RuffR",
+    "text": "Reason for attending RuffR\nTo learn more about git code review. Might have a look at the sheep later."
+  },
+  {
+    "objectID": "suspects/dog_index.html",
+    "href": "suspects/dog_index.html",
+    "title": "🐾 Suspects",
+    "section": "",
+    "text": "The investigators currently have 5 suspects who could have commited the crime.\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nByte Biter\n\n\nChihuahua 🧬\n\n\nPhD in Memory-Efficient Computing and Compact Data Structures\n\n\n\n\n\n\n\n\n\n\n\n\nKlara Cache\n\n\nKarst Shepherd Dog 🧬\n\n\nPhD in Reproducible Workflow Engineering\n\n\n\n\n\n\n\n\n\n\n\n\nKommissar RegEx\n\n\nGerman Shepherd Dog 🧬\n\n\nJoint PhD in Computational Linguistics and Pattern Recognition\n\n\n\n\n\n\n\n\n\n\n\n\nSava Sniffer\n\n\nSerbian Hound 🧬\n\n\nPhD in Computational Biology and Genomic Signal Detection\n\n\n\n\n\n\n\n\n\n\n\n\nVera Vector\n\n\nSwedish Vallhund 🧬\n\n\nPhD in Biostatistics and Vectorised Data Analysis\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "result_index.html",
+    "href": "result_index.html",
+    "title": "Result page",
+    "section": "",
+    "text": "#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 700\n\nlibrary(shiny)\n\n\nshinyApp(\n  ui = fluidPage(\n    selectInput(\n      \"type\",\n      label = \"Choose your criminal\",\n      choices = c(\n        \"Choose here\" = \"\",\n        \"Klara Cache\",\n        \"Kommissar RegEx\",\n        \"Sava Sniffer\",\n        \"Vera Vector\",\n        \"Byte Biter\"\n      ), \n      selected = \"\"\n      \n    ),\n\n    textOutput(\"text_output\"),\n    uiOutput(\"image_output\")\n  ),\n\n  server = function(input, output) {\n\n    output$image_output &lt;- renderUI({\n      if (input$type == \"\") return(NULL)\n      if (input$type == \"Byte Biter\") {\n        tags$img(\n          src = \"../dog_portraits/06_mugshot.png\",\n          alt = \"Byte Biter\",\n          width = \"500px\"\n        )\n      } else {\n        tags$img(\n          src = \"../dog_portraits/07_escape.png\",\n          alt = \"Wrong suspect\",\n          width = \"500px\"\n        )\n      }\n    })\n\n    output$text_output &lt;- renderText({\n      if (input$type == \"\") return(\"\")\n      if (input$type == \"Byte Biter\") {\n        \"You are a true detective! You found the criminal that killed the session!\"\n      } else {\n        \"You made the wrong choice. Now Byte Biter gained more attitude and is on the loose!!\"\n      }\n    })\n  }\n)"
+  },
+  {
+    "objectID": "result_index.html#who-killed-the-r-session",
+    "href": "result_index.html#who-killed-the-r-session",
+    "title": "Result page",
+    "section": "",
+    "text": "#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 700\n\nlibrary(shiny)\n\n\nshinyApp(\n  ui = fluidPage(\n    selectInput(\n      \"type\",\n      label = \"Choose your criminal\",\n      choices = c(\n        \"Choose here\" = \"\",\n        \"Klara Cache\",\n        \"Kommissar RegEx\",\n        \"Sava Sniffer\",\n        \"Vera Vector\",\n        \"Byte Biter\"\n      ), \n      selected = \"\"\n      \n    ),\n\n    textOutput(\"text_output\"),\n    uiOutput(\"image_output\")\n  ),\n\n  server = function(input, output) {\n\n    output$image_output &lt;- renderUI({\n      if (input$type == \"\") return(NULL)\n      if (input$type == \"Byte Biter\") {\n        tags$img(\n          src = \"../dog_portraits/06_mugshot.png\",\n          alt = \"Byte Biter\",\n          width = \"500px\"\n        )\n      } else {\n        tags$img(\n          src = \"../dog_portraits/07_escape.png\",\n          alt = \"Wrong suspect\",\n          width = \"500px\"\n        )\n      }\n    })\n\n    output$text_output &lt;- renderText({\n      if (input$type == \"\") return(\"\")\n      if (input$type == \"Byte Biter\") {\n        \"You are a true detective! You found the criminal that killed the session!\"\n      } else {\n        \"You made the wrong choice. Now Byte Biter gained more attitude and is on the loose!!\"\n      }\n    })\n  }\n)"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Paw & Order: The Broken Pipe Unit",
+    "section": "",
+    "text": "The international RuffR Data Science Conference is taking place at Campus Gotland in Visby. At 02:13, the conference’s R pipeline suddenly stops working. Someone has chewed the &gt; from the native pipe operator:\n\nsuspects |\n  filter(has_alibi == FALSE)\n\nTwenty-five dogs are attending the conference, but only five members of the overnight Pipeline Response Team had access to the restricted project room. They quickly became the only suspects.\nPipeline Response Team\n\nSava Sniffer — a Serbian Hound from Serbia\nKlara Cache — a Karst Shepherd Dog from Slovenia\nByte Biter — a Chihuahua from Mexico\nKommissar RegEx — a German Shepherd Dog with German–Austrian citizenship\nVera Vector — a Swedish Vallhund from Sweden\n\nEach suspect has a different programming speciality, travel history and explanation for their whereabouts at the time of the crime.\nCheck out their details by hovering on the images or in the Suspects tab."
+  },
+  {
+    "objectID": "clue.html",
+    "href": "clue.html",
+    "title": "Examine the Digital Clues",
+    "section": "",
+    "text": "The five suspects admit that they returned to the university because they had procrastinated. Each claims to have been working somewhere else inside the building when the pipeline was damaged.\nExamine the digital evidence and decide which alibis are supported."
+  },
+  {
+    "objectID": "clue.html#clue-1-the-signed-git-commit",
+    "href": "clue.html#clue-1-the-signed-git-commit",
+    "title": "Examine the Digital Clues",
+    "section": "Clue 1: The signed Git commit",
+    "text": "Clue 1: The signed Git commit\nKommissar RegEx claims that he was reviewing another repository from a workstation in a different university room at 21:13.\nLet’s inspect the Git records.\n\nkommissar_evidence &lt;- git_log |&gt;\n  filter(\n    user == \"kommissar-regex\",\n    time &gt;= as_hms(\"21:12:45\"),\n    time &lt;= as_hms(\"21:13:15\"),\n    signature_valid\n  )\n\n\n\nReveal the finding\n\nselect(time, workstation, repository, message) |&gt; kable( col.names = c( “Time”, “Workstation”, “Repository”, “Commit” ) )\n\n::: {.cell-output-display}\n\n\n|Time     |Workstation  |Repository    |Commit                      |\n|:--------|:------------|:-------------|:---------------------------|\n|21:13:04 |regex-room-2 |date-patterns |Fix suspicious date pattern |\n\n\n:::\n:::\n\n\n\nA verified commit was made through Kommissar RegEx’s authenticated account at **21:13:04** from another university room.\n\nThat is a strong digital alibi—but is it perfect? Someone else might theoretically have used his authenticated session.\n\n**Provisional digital alibi supported:** Kommissar RegEx\n\n**Still lacking a digital alibi:** Sava Sniffer, Klara Cache, Byte Biter, and Vera Vector\n\n**Laboratory status:** All five dogs remain under investigation.\n\n&lt;/details&gt;\n\n## Clue 2: The active cache\n\nKlara Cache claims that she was monitoring a long-running workflow in the reproducibility room.\n\nDid her authenticated session remain active around 21:13?\n\n\n::: {.cell}\n\n```{.r .cell-code}\nklara_evidence &lt;- cache_events |&gt;\n  filter(\n    user == \"klara-cache\",\n    time &gt;= as_hms(\"21:12:00\"),\n    time &lt;= as_hms(\"21:14:00\")\n  ) |&gt;\n  arrange(time)\n\nklara_before &lt;- any(klara_evidence$time &lt; incident_time)\nklara_after  &lt;- any(klara_evidence$time &gt; incident_time)\n\nklara_alibi_supported &lt;- klara_before && klara_after\n:::\n\n\nReveal the finding\n\n\nklara_evidence |&gt;\n  select(time, workstation, event, target) |&gt;\n  kable(\n    col.names = c(\n      \"Time\",\n      \"Workstation\",\n      \"Cache event\",\n      \"Target\"\n    )\n  )\n\n\n\n\nTime\nWorkstation\nCache event\nTarget\n\n\n\n\n21:12:41\nreproducibility-room\ntarget_checked\nclean_data\n\n\n21:12:57\nreproducibility-room\ntarget_skipped\nmodel\n\n\n21:13:08\nreproducibility-room\ntarget_checked\nreport\n\n\n21:13:25\nreproducibility-room\npipeline_completed\nreport\n\n\n\n\n\nInteresting! Klara’s authenticated workstation recorded cache activity immediately before and after the pipeline was damaged.\nThis supports her story. However, a cached process can run automatically, and an authenticated session could be used by another dog.\nProvisional digital alibi supported: Klara Cache\nDigital alibis supported so far: Kommissar RegEx and Klara Cache\nStill lacking a digital alibi: Sava Sniffer, Byte Biter, and Vera Vector\nLaboratory status: All five dogs remain under investigation."
+  },
+  {
+    "objectID": "clue.html#clue-3-the-missing-semicolon",
+    "href": "clue.html#clue-3-the-missing-semicolon",
+    "title": "Examine the Digital Clues",
+    "section": "Clue 3: The missing semicolon",
+    "text": "Clue 3: The missing semicolon\nSava Sniffer claims that he was following the scent of a missing semicolon through another repository.\nLet’s search the server logs.\n\nsava_evidence &lt;- server_log |&gt;\n  filter(\n    user == \"sava-sniffer\",\n    str_detect(\n      message,\n      regex(\"semicolon|;\", ignore_case = TRUE)\n    ),\n    time &gt;= as_hms(\"21:12:00\"),\n    time &lt;= as_hms(\"21:14:00\")\n  ) |&gt;\n  arrange(time)\n\nsava_before &lt;- any(sava_evidence$time &lt; incident_time)\nsava_after  &lt;- any(sava_evidence$time &gt; incident_time)\n\nsava_alibi_supported &lt;- sava_before && sava_after\n\n\n\nReveal the finding\n\n\nsava_evidence |&gt;\n  select(time, repository, message) |&gt;\n  kable(\n    col.names = c(\n      \"Time\",\n      \"Repository\",\n      \"Log message\"\n    )\n  )\n\n\n\n\nTime\nRepository\nLog message\n\n\n\n\n21:12:38\nmissing-semicolon\nSearching log for semicolon\n\n\n21:12:55\nmissing-semicolon\nPossible missing ; found\n\n\n21:13:11\nmissing-semicolon\nChecking line after semicolon\n\n\n21:13:29\nmissing-semicolon\nSemicolon search completed\n\n\n\n\n\nThere it is! Sava’s authenticated account submitted commands immediately before and after 21:13 while searching the missing-semicolon repository.\nThis is another strong digital alibi—but it still identifies an account rather than conclusively identifying the paws at the keyboard.\nProvisional digital alibi supported: Sava Sniffer\nDigital alibis supported: Kommissar RegEx, Klara Cache, and Sava Sniffer\nDigital finalists: Byte Biter and Vera Vector\nLaboratory status: Samples from all five dogs must still be examined."
+  },
+  {
+    "objectID": "clue.html#two-digital-finalistsbut-five-laboratory-samples",
+    "href": "clue.html#two-digital-finalistsbut-five-laboratory-samples",
+    "title": "Examine the Digital Clues",
+    "section": "Two digital finalists—but five laboratory samples",
+    "text": "Two digital finalists—but five laboratory samples\nThree dogs have produced strong digital alibis:\n\nKommissar RegEx\nKlara Cache\nSava Sniffer\n\nByte Biter and Vera Vector remain the two digital finalists.\nBut wait—could another dog have used Kommissar’s authenticated session? Could Klara’s cache have continued automatically? Could someone have submitted commands through Sava’s account?\nThe digital evidence alone cannot answer those questions.\nThe laboratory must therefore compare the bite, hair, and paw samples from all five dogs.\nSend the evidence to the laboratory"
+  },
+  {
+    "objectID": "lab.html",
+    "href": "lab.html",
+    "title": "Forensic analysis",
+    "section": "",
+    "text": "Figure 1: Hair features of the dogs.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Paw print sizes of the dogs.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Bite marks of the dogs.\n\n\n\n\n\nThe physical evidence has narrowed the case, but it has not solved it. Byte fits the bite evidence; Vera fits part of the hair evidence. The paw print is too incomplete to distinguish between them.\nReturn to the digital clues\nCast your vote"
+  },
+  {
+    "objectID": "suspects/byte_byter.html",
+    "href": "suspects/byte_byter.html",
+    "title": "Byte Biter",
+    "section": "",
+    "text": "About me\nBig dog in a small package. I make complex analyses work on computers with limited memory.\n\n\nA fun fact\nI like to use an R Script to pick among my 14 favorite colorful bandanas.\n\n\nReason for attending RuffR\nBuilding smaller pipelines and barking at Vikings."
+  },
+  {
+    "objectID": "suspects/klara_cache.html",
+    "href": "suspects/klara_cache.html",
+    "title": "Klara Cache",
+    "section": "",
+    "text": "I am a national treasure. In my free time I fight wolves and bears."
+  },
+  {
+    "objectID": "suspects/klara_cache.html#a-fun-fact",
+    "href": "suspects/klara_cache.html#a-fun-fact",
+    "title": "Klara Cache",
+    "section": "A fun fact",
+    "text": "A fun fact\nI remember every hidden toy! It’s my local storage system."
+  },
+  {
+    "objectID": "suspects/klara_cache.html#reason-for-attending-ruffr",
+    "href": "suspects/klara_cache.html#reason-for-attending-ruffr",
+    "title": "Klara Cache",
+    "section": "Reason for attending RuffR",
+    "text": "Reason for attending RuffR\nTo make more reproducible R projects. And protect the sheep of Gotland. Always reuse cached results!"
+  },
+  {
+    "objectID": "suspects/sava_sniffer.html",
+    "href": "suspects/sava_sniffer.html",
+    "title": "Sava Sniffer",
+    "section": "",
+    "text": "About me\nI look for rare biological signals in large noisy datasets. I’ve been told I have a very distinctive high-pitched voice.\n\n\nA fun fact\nI collect postcards of rivers (my favorite shows the River Sava).\n\n\nReason for attending RuffR\nI will follow the scent of the bugs until I find them all ‘#debugging’."
+  }
+]
