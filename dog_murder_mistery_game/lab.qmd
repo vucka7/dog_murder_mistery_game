@@ -78,7 +78,7 @@ ggplot(data, aes(paw_length_cm, paw_width_cm, label = name, color = name)) +
   geom_point() +
   geom_text_repel() +
   scale_color_manual(values = c("Sava Sniffer" = "#3399FF", "Klara Cache" = "#0000FF",
-                               "Lady Byte" = "#660099", "Kommissar RegEx" = "#0099FF",
+                               "Byte Biter" = "#660099", "Kommissar RegEx" = "#0099FF",
                                "Vera Vector" = "#9966CC", "Crime-scene sample" = "#CC0033")) +
   labs(x = "Paw length (cm)", y = "Paw width (cm)", title = "Paw-print analysis") +
   theme_minimal() +
@@ -94,11 +94,11 @@ ggplot(data, aes(paw_length_cm, paw_width_cm, label = name, color = name)) +
 #| fig-cap: "Bite marks of the dogs."
 #| warning: false
 
-selected_data <- data[data$id %in% c("lady_byte", "vera", "crime_scene"), ]
+selected_data <- data[data$name %in% c("Bite Byter", "Vera Vector", "Crime-scene sample"), ]
 
 # Bite-mark interval plot
 # geom_errorbarh() or geom_pointrange() 
-ggplot(selected_data, aes(x = id, y = bite_width_cm)) +
+ggplot(selected_data, aes(x = name, y = bite_width_cm)) +
   geom_point(size = 3) +                  # shows the measurement itself
   geom_errorbar(
     aes(ymin = bite_width_lower_cm, ymax = bite_width_upper_cm),
