@@ -1,0 +1,308 @@
+---
+title: "Examine the Digital Clues"
+subtitle: "Case file RUFFR-2113"
+format:
+  html:
+    toc: true
+    code-fold: false
+execute:
+  warning: false
+  message: false
+---
+
+The five suspects admit that they returned to the university because they had procrastinated. Each claims to have been working somewhere else inside the building when the pipeline was damaged.
+
+Examine the digital evidence and decide which alibis are supported.
+
+::: {.callout-warning}
+Remember
+
+Logs identify accounts, devices, and access cards—not necessarily the dog physically using them.
+
+A digital alibi is therefore **provisional**. Samples from all five dogs must still be examined in the laboratory.
+:::
+
+
+```{r}
+#| label: setup
+
+library(readr)
+library(dplyr)
+library(stringr)
+library(hms)
+library(knitr)
+library(tibble)
+library(readr)
+
+dogs <- read_csv(
+  "../data/dog_database_expanded.csv",
+  show_col_types = FALSE
+) |>
+  filter(record_type == "suspect_reference")
+
+# Create the fictional Git records
+git_log <- tribble(
+  ~time,      ~user,               ~workstation,          ~repository,       ~signature_valid, ~message,
+  "21:11:42", "vera-vector",       "study-room-3",        "vector-analysis", FALSE,            "Check factor levels",
+  "21:13:04", "kommissar-regex",   "regex-room-2",        "date-patterns",   TRUE,             "Fix suspicious date pattern",
+  "21:14:21", "lady-byte",         "shared-workstation",  "profiling-project", FALSE,          "Open project"
+)
+
+# Save it as a CSV
+write_csv(
+  git_log,
+  "../data/git_log.csv"
+)
+
+git_log <- read_csv(
+  "../data/git_log.csv",
+  show_col_types = FALSE
+) |>
+  mutate(time = as_hms(time))
+
+# Create the fictional targets cache records
+cache_events <- tribble(
+  ~time,      ~user,             ~workstation,             ~event,              ~target,
+  "21:11:51", "vera-vector",     "study-room-3",           "target_started",     "factor_summary",
+  "21:12:41", "klara-cache",     "reproducibility-room",   "target_checked",     "clean_data",
+  "21:12:57", "klara-cache",     "reproducibility-room",   "target_skipped",     "model",
+  "21:13:08", "klara-cache",     "reproducibility-room",   "target_checked",     "report",
+  "21:13:25", "klara-cache",     "reproducibility-room",   "pipeline_completed", "report",
+  "21:14:06", "lady-byte",       "shared-workstation",     "target_started",     "memory_profile"
+)
+
+# Save it as a CSV
+write_csv(
+  cache_events,
+  "../data/cache_events.csv"
+)
+
+cache_events <- read_csv(
+  "../data/cache_events.csv",
+  show_col_types = FALSE
+) |>
+  mutate(time = as_hms(time))
+# Create the fictional conference server records
+server_log <- tribble(
+  ~time,      ~user,             ~repository,             ~message,
+  "21:11:48", "vera-vector",     "vector-analysis",       "Checking factor levels",
+  "21:12:38", "sava-sniffer",    "missing-semicolon",     "Searching log for semicolon",
+  "21:12:55", "sava-sniffer",    "missing-semicolon",     "Possible missing ; found",
+  "21:13:11", "sava-sniffer",    "missing-semicolon",     "Checking line after semicolon",
+  "21:13:29", "sava-sniffer",    "missing-semicolon",     "Semicolon search completed",
+  "21:14:02", "lady-byte",       "profiling-project",     "Opening memory report"
+)
+
+# Save it as a CSV
+write_csv(
+  server_log,
+  "../data/server_log.csv"
+)
+
+server_log <- read_csv(
+  "../data/server_log.csv",
+  show_col_types = FALSE
+) |>
+  mutate(time = as_hms(time))
+
+incident_time <- as_hms("21:13:00")
+
+```
+
+
+## Clue 1: The signed Git commit
+
+Kommissar RegEx claims that he was reviewing another repository from a workstation in a different university room at 21:13.
+
+Let’s inspect the Git records.
+
+```{r}
+
+kommissar_evidence <- git_log |>
+  filter(
+    user == "kommissar-regex",
+    time >= as_hms("21:12:45"),
+    time <= as_hms("21:13:15"),
+    signature_valid
+  )
+
+```
+
+<details class="clue-result">
+<summary><strong>Reveal the finding</strong></summary
+
+```{r}
+
+kommissar_evidence |>
+  select(time, workstation, repository, message) |>
+  kable(
+    col.names = c(
+      "Time",
+      "Workstation",
+      "Repository",
+      "Commit"
+    )
+  )
+
+```
+
+
+A verified commit was made through Kommissar RegEx’s authenticated account at **21:13:04** from another university room.
+
+That is a strong digital alibi—but is it perfect? Someone else might theoretically have used his authenticated session.
+
+**Provisional digital alibi supported:** Kommissar RegEx
+
+**Still lacking a digital alibi:** Sava Sniffer, Klara Cache, Lady Byte, and Vera Vector
+
+**Laboratory status:** All five dogs remain under investigation.
+
+</details>
+
+## Clue 2: The active cache
+
+Klara Cache claims that she was monitoring a long-running workflow in the reproducibility room.
+
+Did her authenticated session remain active around 21:13?
+
+```{r}
+klara_evidence <- cache_events |>
+  filter(
+    user == "klara-cache",
+    time >= as_hms("21:12:00"),
+    time <= as_hms("21:14:00")
+  ) |>
+  arrange(time)
+
+klara_before <- any(klara_evidence$time < incident_time)
+klara_after  <- any(klara_evidence$time > incident_time)
+
+klara_alibi_supported <- klara_before && klara_after
+
+```
+
+<details class="clue-result">
+<summary><strong>Reveal the finding</strong></summary>
+
+```{r}
+klara_evidence |>
+  select(time, workstation, event, target) |>
+  kable(
+    col.names = c(
+      "Time",
+      "Workstation",
+      "Cache event",
+      "Target"
+    )
+  )
+
+```
+
+
+Interesting! Klara’s authenticated workstation recorded cache activity immediately before and after the pipeline was damaged.
+
+This supports her story. However, a cached process can run automatically, and an authenticated session could be used by another dog.
+
+**Provisional digital alibi supported:** Klara Cache
+
+**Digital alibis supported so far:** Kommissar RegEx and Klara Cache
+
+**Still lacking a digital alibi:** Sava Sniffer, Lady Byte, and Vera Vector
+
+**Laboratory status:** All five dogs remain under investigation.
+
+</details>
+
+## Clue 3: The missing semicolon
+
+Sava Sniffer claims that he was following the scent of a missing semicolon through another repository.
+
+Let’s search the server logs.
+
+```{r}
+sava_evidence <- server_log |>
+  filter(
+    user == "sava-sniffer",
+    str_detect(
+      message,
+      regex("semicolon|;", ignore_case = TRUE)
+    ),
+    time >= as_hms("21:12:00"),
+    time <= as_hms("21:14:00")
+  ) |>
+  arrange(time)
+
+sava_before <- any(sava_evidence$time < incident_time)
+sava_after  <- any(sava_evidence$time > incident_time)
+
+sava_alibi_supported <- sava_before && sava_after
+```
+
+<details class="clue-result">
+<summary><strong>Reveal the finding</strong></summary>
+
+```{r}
+sava_evidence |>
+  select(time, repository, message) |>
+  kable(
+    col.names = c(
+      "Time",
+      "Repository",
+      "Log message"
+    )
+  )
+```
+
+There it is! Sava’s authenticated account submitted commands immediately before and after 21:13 while searching the missing-semicolon repository.
+
+This is another strong digital alibi—but it still identifies an account rather than conclusively identifying the paws at the keyboard.
+
+**Provisional digital alibi supported:** Sava Sniffer
+
+**Digital alibis supported:** Kommissar RegEx, Klara Cache, and Sava Sniffer
+
+**Digital finalists:** Lady Byte and Vera Vector
+
+**Laboratory status:** Samples from all five dogs must still be examined.
+
+</details>
+
+## Two digital finalists—but five laboratory samples
+
+Three dogs have produced strong digital alibis:
+
+- Kommissar RegEx
+- Klara Cache
+- Sava Sniffer
+
+Lady Byte and Vera Vector remain the two **digital finalists**.
+
+But wait—could another dog have used Kommissar’s authenticated session? Could Klara’s cache have continued automatically? Could someone have submitted commands through Sava’s account?
+
+The digital evidence alone cannot answer those questions.
+
+The laboratory must therefore compare the bite, hair, and paw samples from **all five dogs**.
+
+[Send the evidence to the laboratory](lab.qmd){.btn .btn-warning .btn-lg}
+
+```{r}
+stopifnot(nrow(kommissar_evidence) >= 1)
+
+stopifnot(klara_before)
+stopifnot(klara_after)
+
+stopifnot(sava_before)
+stopifnot(sava_after)
+
+stopifnot(
+  setequal(
+    dogs$name[dogs$digital_alibi_supported],
+    c(
+      "Sava Sniffer",
+      "Klara Cache",
+      "Kommissar RegEx"
+    )
+  )
+)
+
+```
