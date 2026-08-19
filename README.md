@@ -1,6 +1,6 @@
 # Paw & Order: The Broken Pipe Unit
 
-An interactive dog-themed mystery game developed in R and Quarto during the RAUKR 2026 Data Science With R course.
+An interactive dog-themed mystery game developed in R and Quarto during the RaukR 2026 Data Science With R course.
 
 ## Premise of the game
 
@@ -14,11 +14,11 @@ Twenty-five dogs are attending the conference, but only five members of the over
 The player must examine the evidence, test the suspects’ alibis and identify who broke the R code.
 
 ## The suspects
-Sava Sniffer — a Serbian Hound from Serbia
-Klara Cache — a Karst Shepherd Dog from Slovenia
-Byte Biter — a Chihuahua from Mexico
-Kommissar RegEx — a German Shepherd Dog with German–Austrian citizenship
-Vera Vector — a Swedish Vallhund from Sweden
+1. Sava Sniffer — a Serbian Hound from Serbia
+2. Klara Cache — a Karst Shepherd Dog from Slovenia
+3. Byte Biter — a Chihuahua from Mexico
+4. Kommissar RegEx — a German Shepherd Dog with German–Austrian citizenship
+5. Vera Vector — a Swedish Vallhund from Sweden
 
 Each suspect has a different programming speciality, travel history and explanation for their whereabouts at the time of the crime.
 
@@ -34,18 +34,18 @@ With all this evidence the player will be able to identify the culprit. On the f
 
 ## Features
 
--Multi-page Quarto website
--World map showing the dogs origin
--Suspect profile pages
--Expandable clues with hidden findings
--Simulated forensic datasets: bite-mark, dog-hair and paw-print
--Shinylive dropdown menu to cast the verdict
+1. Multi-page Quarto website
+2. World map showing the dogs origin
+3. Suspect profile pages
+4. Expandable clues with hidden findings
+5. Simulated forensic datasets: bite-mark, dog-hair and paw-print
+6. Shinylive dropdown menu to cast the verdict
 
 ## The fictional investigation uses four categories of evidence:
 
--Git commit history and reflog
--targets cache and workstation metadata
--Conference server logs
--Simulated forensic analysis of bite marks, hair and paw prints
+1. Git commit history and reflog
+2. targets cache and workstation metadata
+3. Conference server logs
+4. Simulated forensic analysis of bite marks, hair and paw prints
 
 All forensic measurements used in the game are fictional and created for educational/entertainment purposes.
