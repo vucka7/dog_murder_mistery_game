@@ -2,7 +2,7 @@
 
 An interactive dog-themed mystery game developed in R and Quarto during the RAUKR 2026 Data Science With R course.
 
-Premise of the game
+## Premise of the game
 
 The international RuffR Data Science Conference is taking place at Campus Gotland in Visby. At 02:13, the conference’s R pipeline suddenly stops working. Someone has chewed the > from the native pipe operator:
 
@@ -13,7 +13,7 @@ Twenty-five dogs are attending the conference, but only five members of the over
 
 The player must examine the evidence, test the suspects’ alibis and identify who broke the R code.
 
-The suspects
+## The suspects
 Sava Sniffer — a Serbian Hound from Serbia
 Klara Cache — a Karst Shepherd Dog from Slovenia
 Byte Biter — a Chihuahua from Mexico
@@ -22,7 +22,7 @@ Vera Vector — a Swedish Vallhund from Sweden
 
 Each suspect has a different programming speciality, travel history and explanation for their whereabouts at the time of the crime.
 
-Gameplay
+## Gameplay
 
 The investigation progresses through several stages:
 
@@ -32,19 +32,20 @@ Now the actual fun begins, the player can start to investigate and examine evide
 However, the digital evidence is not sufficient for the final verdict, so the player sends of forensic evidence of bite-marks, hair and paw-prints found at the crime seen. 
 With all this evidence the player will be able to identify the culprit. On the final page the player can enter their verdict and see if they were right or a criminal was set free ...
 
-Features
-Multi-page Quarto website
-World map showing the dogs origin
-Suspect profile pages
-Expandable clues with hidden findings
-Simulated forensic datasets: bite-mark, dog-hair and paw-print
-Shinylive dropdown menu to cast the verdict
+## Features
 
-The fictional investigation uses four categories of evidence:
+-Multi-page Quarto website
+-World map showing the dogs origin
+-Suspect profile pages
+-Expandable clues with hidden findings
+-Simulated forensic datasets: bite-mark, dog-hair and paw-print
+-Shinylive dropdown menu to cast the verdict
 
-Git commit history and reflog
-targets cache and workstation metadata
-Conference server logs
-Simulated forensic analysis of bite marks, hair and paw prints
+## The fictional investigation uses four categories of evidence:
+
+-Git commit history and reflog
+-targets cache and workstation metadata
+-Conference server logs
+-Simulated forensic analysis of bite marks, hair and paw prints
 
 All forensic measurements used in the game are fictional and created for educational/entertainment purposes.
