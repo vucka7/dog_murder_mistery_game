@@ -119,6 +119,6 @@ The physical evidence has narrowed the case, but it has not solved it. Byte fits
 
 
 
-[Return to the digital clues](clues.qmd){.btn .btn-secondary}
+[Return to the digital clues](clue.qmd){.btn .btn-secondary}
 
-[Cast your vote](verdict.qmd){.btn .btn-danger}
+[Cast your vote](result_index.qmd){.btn .btn-danger}
