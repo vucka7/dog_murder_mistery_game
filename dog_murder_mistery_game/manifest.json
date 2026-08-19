@@ -4166,7 +4166,10 @@
       "checksum": "4b9a1639f5b03b582c80f7272fedca1b"
     },
     "_quarto.yml": {
-      "checksum": "1813918e8ad1d22f8cebc043c7596949"
+      "checksum": "bd00092bc54ec35eb3f22abc2682c3cc"
+    },
+    "_site/clue.html": {
+      "checksum": "ce2f57855b989f8741a155b1095cea63"
     },
     "_site/dog_portraits/01_Sava_Sniffer.png": {
       "checksum": "2c3e81522f247cf4f863781493c3ab66"
@@ -4183,8 +4186,14 @@
     "_site/dog_portraits/05_Vera_Vector.png": {
       "checksum": "246520c5058787e5e8a73855fb56c187"
     },
+    "_site/dog_portraits/06_mugshot.png": {
+      "checksum": "9f4eb28aac22161beef23e1516d84046"
+    },
+    "_site/dog_portraits/07_escape.png": {
+      "checksum": "a11aa0badac6ea39b865144f5b412350"
+    },
     "_site/index.html": {
-      "checksum": "611e588e28da0f7661f6f7b14a0b5f51"
+      "checksum": "d3d7497c1efdac5c775792850d33e746"
     },
     "_site/lab_files/figure-html/fig-bitemarks-1.png": {
       "checksum": "8e66f3c9e3fbb52abb0b5213e393f6a5"
@@ -4193,19 +4202,19 @@
       "checksum": "49ea9bb3e9ff612be6cbd5cab255cae4"
     },
     "_site/lab_files/figure-html/fig-pawprints-1.png": {
-      "checksum": "e2ca000dd637ea4635d7fff73cd6848e"
+      "checksum": "85aa0cf5f1da2ac9efc6fb96cff101da"
     },
     "_site/lab.html": {
-      "checksum": "fa18521d65cc15de2ed4d061ec7e0568"
+      "checksum": "965e85a6832d85a06a307268fce5fbfd"
     },
     "_site/listings.json": {
       "checksum": "26fd5351bf433ca8a9f613511f277a0f"
     },
     "_site/result_index.html": {
-      "checksum": "f782e45fcd84c83a82d422ba2e89228d"
+      "checksum": "e05d318f6770d146d16c9e757a9595f5"
     },
     "_site/search.json": {
-      "checksum": "504783cd977b3243c288c8d95a95bd29"
+      "checksum": "a69beb2eb9731f8bd4f0d8dcc4bc590b"
     },
     "_site/shinylive-sw.js": {
       "checksum": "75b232a0804ddef5f2ac7a1b3749ec5e"
@@ -4334,7 +4343,7 @@
       "checksum": "e490a2bbfd14b1efe8043136d6eab6d3"
     },
     "_site/site_libs/quarto-contrib/shinylive-0.10.12/shinylive/webr/packages/metadata.rds": {
-      "checksum": "c4797e16b7b398af6ddebcbf3b6bee47"
+      "checksum": "61d4f593c512d6b7847908129eaac9ca"
     },
     "_site/site_libs/quarto-contrib/shinylive-0.10.12/shinylive/webr/R.js": {
       "checksum": "b56860f3b1fef94cfd6d43b5f5c50799"
@@ -4886,28 +4895,40 @@
       "checksum": "e31c3cdea03dfab8a29456978017bd10"
     },
     "_site/suspects/byte_byter.html": {
-      "checksum": "8141f7d4487be27309bdd6c0196efd3e"
+      "checksum": "a650ddbebfb2400574796ddfd90bb1af"
     },
     "_site/suspects/dog_index.html": {
-      "checksum": "8e5d17fb7ed733367ce4a81971b5b084"
+      "checksum": "d093604062646ee26cf9ae3951083f97"
     },
     "_site/suspects/klara_cache.html": {
-      "checksum": "e7a86845053c20d20b4ea4a31c8a4feb"
+      "checksum": "54769039651b1ab0a6da62330fac9ebd"
     },
     "_site/suspects/kommissar_regEx.html": {
-      "checksum": "3e01dd2e0331cc6d9f2b5037fc3f304b"
+      "checksum": "33aedbcd0842ad28623c400d7a7b4532"
     },
     "_site/suspects/sava_sniffer.html": {
-      "checksum": "9a158d1d339a084f7d558f864ce72fb7"
+      "checksum": "95db2357ed09f45789f640a01c0eaf52"
     },
     "_site/suspects/vera_vector.html": {
-      "checksum": "09034ce2148f57bec5ee0e39f00d3a12"
+      "checksum": "c0a355dd6a3cd7cbe38a464e8b1dd230"
+    },
+    "clue.qmd": {
+      "checksum": "3ec2622cdc8b45dd71ab43e3d1c202e2"
+    },
+    "data/cache_events.csv": {
+      "checksum": "6d2e2831b3e247b6286b046d8fd36a2c"
     },
     "data/dog_database_expanded.csv": {
       "checksum": "2a632d95c873f9ab4acac5ae68903d88"
     },
     "data/dog_database.csv": {
       "checksum": "0cd618bab05b15ec8f69835e6988f59f"
+    },
+    "data/git_log.csv": {
+      "checksum": "cb4416d9e72b6c560e8fff97c98fe1fe"
+    },
+    "data/server_log.csv": {
+      "checksum": "4df0481be50d68a69c926f9ece70e93b"
     },
     "dog_portraits/01_Sava_Sniffer.png": {
       "checksum": "2c3e81522f247cf4f863781493c3ab66"
@@ -4924,6 +4945,12 @@
     "dog_portraits/05_Vera_Vector.png": {
       "checksum": "246520c5058787e5e8a73855fb56c187"
     },
+    "dog_portraits/06_mugshot.png": {
+      "checksum": "9f4eb28aac22161beef23e1516d84046"
+    },
+    "dog_portraits/07_escape.png": {
+      "checksum": "a11aa0badac6ea39b865144f5b412350"
+    },
     "index.qmd": {
       "checksum": "cbc18d10f895562432a5d4eb9db88d8f"
     },
@@ -4931,7 +4958,7 @@
       "checksum": "b114074174fd6851fb73c0336eb6c6fd"
     },
     "result_index.qmd": {
-      "checksum": "5cc6597b9b8aaea6ad637f035450589f"
+      "checksum": "93f2f0183f7cd5f685abe700f4cf99c4"
     },
     "styles.css": {
       "checksum": "e31c3cdea03dfab8a29456978017bd10"
